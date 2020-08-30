@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页练习</title>
+</head>
+<body>
+
+请输入你的姓名：<input type="text" placehoder="白浅" readonly>
+<!--输入框，readonly表示只读，不可输入 -->
+<br>
+你最喜欢的动漫：
+<input type="radio" name="dm">火影忍者
+<input type="radio" name="dm">海贼王
+<input type="radio" name="dm" checked>一人之下
+<!--单选框；多个选1个要定义name；checked表示默认选中-->
+<br>
+你想去旅行的城市：
+<input type="checkbox"> 西藏
+<input type="checkbox"> 青岛
+<input type="checkbox"> 云南
+<!--多选框-->
+<br>
+请上传你的照片：
+<input type="file">
+<br>
+<button disabled>点我</button>
+<!--文件上传，disable表示不可点-->
+<br>
+选择你所在的城市：
+<select>
+    <option>北京</option>
+    <option>上海</option>
+    <option>西安</option>
+</select>
+<!--下拉框-select/option ul/li-->
+<br>
+<div>
+    <a href="http://www.baidu.com">百度一下</a>
+    <a href="http://www.hao123.com">hao123</a>
+    <img src="//www.baidu.com/img/flexible/logo/pc/result.png">
+    <img src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png">
+</div>
+<!--div块，分区管理，统一样式-->
+<br>
+<iframe src="http://www.baidu.com"></iframe>
+<!--iframe内，放的就是html页面-->
+<br>
+<textarea rows="20" cols="50"></textarea>
+<!--textarea即一个文本输入区域-->
+<!--以上为web第1周第1课-->
+<br>
+
+<!--以下为web第1周第2课-->
+<button id="press_me">点我呀</button>
+<h1 id="big">我们是柠檬班，Python17</h1>
+<script>
+    var a=document.getElementById("press_me");
+    var b=document.getElementById("big");
+    a.onclick=function(){alert("哈哈，你点我了呀！")}
+    b.onmouseover=function(){b.style.color="red"}
+    b.onmouseout=function(){b.style.color="green"}
+</script>
+<!--然后打开这个页面，进入调试模式-console，输入
+> a=document.getElementById("press_me");
+> a.onclick
+> b=document.getElementById("big");
+> b.onmouseover
+> b.onmouseout
+注意：script写在页面最后面，因为页面是从上往下加载的，要保证能找到元素。
+如果写在前面也可以，需要写在window.onload=function(){alert("everthing is ready")}中。表示已经加载完毕。
+以上script中变量赋值，忘了写var也能正常执行。
+-->
+
+</body>
+</html>
