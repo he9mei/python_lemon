@@ -43,10 +43,10 @@ handles = driver.window_handles
 print(f"所有窗口：{handles}")
 # 获得当前窗口
 handle_1 = driver.current_window_handle
-print(f"当前窗口：{handle_1}")
+print(f"切换前的当前窗口：{handle_1}")
 # 切换窗口
 driver.switch_to.window(handles[-1])   # -1就是最新打开的窗口
-print(f"当前窗口：{driver.current_window_handle}")
+print(f"切换后的当前窗口：{driver.current_window_handle}")
 
 # 操作新窗口
 # driver.find_element_by_xpath('//ul[@id="js-tab"]//h2[contains(text(),"老师")]').click()
@@ -60,9 +60,9 @@ driver.find_element(*loc).click()
 
 # 切回老窗口
 time.sleep(2)
-driver.switch_to.window(handle_1)
-# driver.switch_to.default_content()  # 回到主窗口，也就是第1次进来的窗口---但是实际没有切换，没报错？
-print(f"当前窗口：{driver.current_window_handle}")
+# driver.switch_to.window(handle_1)  # 以下方式更方便，无需赋值
+driver.switch_to.window(handles[0])  # 回到主窗口，也就是第1次进来的窗口。0即代表第1个打开的窗口
+print(f"切换回主窗口：{driver.current_window_handle}")
 
 time.sleep(5)
 driver.quit()
