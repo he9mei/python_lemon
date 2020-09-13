@@ -54,7 +54,3 @@ driver.find_element(By.ID, "login_close").click()  # 关闭登录框
 
 time.sleep(5)
 driver.quit()
-
-'''
-作业：腾讯课堂的登录流程
-'''
