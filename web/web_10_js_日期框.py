@@ -47,16 +47,19 @@ el_date_input.send_keys("2020-09-18")
 '''
 以上是js的第1种用法---直接执行js代码
 作业: 将12306查询流程补全
+'''
 
+'''
 以下是js的第2种用法---带参数的js,参数来自Python代码（比如滚动条；比如，没有ID，需要通过xpath找元素的）
 （如果要学习更多js参数的，百度js argumnets）
 滚动条用法：
-滚动条操作：当待才做的元素在页面可视范围之外，则需要将待操作的元素，滚动到可视区域中。
+滚动条操作：
+当要操作的元素在页面可视范围之外，则需要将待操作的元素，滚动到可视区域中。
 （1）先找到元素
 element=driver.find_element_by_id("id")
 （2）再将元素拖到可见区域
 通过执行js语句实现
-driver.execute_script("arguments[0].scrollintoView();",element)   # 0即代表参数的序号，也就是element
+driver.execute_script("arguments[0].scrollIntoView();",element)   # 0即代表参数的序号，也就是element
 （3）再操作元素
 element.click()
 
@@ -66,14 +69,19 @@ ele1 = driver.find_element_by_xpath('')
 driver.execute_script("arguments[0].readOnly=false;arguments[1].value='my_value';", ele1,ele2)
 '''
 
-# 将之前的代码改写
+# 运用---将之前的代码改写
+# （1）可以先把元素定位写好，再当做参数传给JS，就不需要用JS代码中document来找元素了。
 ele = driver.find_element_by_xpath('//input[@id="train_date"]')
 driver.execute_script("arguments[0].readOnly=false;", ele)
-# ---未完成
+# （2）如果想改写为外部传入的日期，也可以把日期当做参数传入
+date = "2018-09-16"
+js = '''
+a = document.getElementById("train_date")
+a.readOnly = false
+a.value = arguments[0]
+'''
+driver.execute_script(js, date)
+
 
 sleep(5)
 driver.quit()
-
-
-
-# web-第3周-第1节-1小时15分钟
