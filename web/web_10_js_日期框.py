@@ -85,3 +85,11 @@ driver.execute_script(js, date)
 
 sleep(5)
 driver.quit()
+
+'''
+补充：
+关于12306起始地/目的地的修改，涉及到两个值都需要修改。
+js_start='var a=document.getElementById("fromStationText");a.value="西安";'\
+        'var b=document.getElementById("fromStation");b.value="XAY";'
+driver.execute_script(js_start)
+'''
