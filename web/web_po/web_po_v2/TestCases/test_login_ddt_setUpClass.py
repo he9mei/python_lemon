@@ -1,10 +1,16 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+'''
+update:
+1.使用setupclass和teardownclass改写
+2.ddt使用直接导入相应的类，并加上unpack解包
+'''
+
 import unittest
 from selenium import webdriver
 from time import sleep
-import ddt
+from ddt import ddt, data, unpack
 
 from web.web_po.web_po_v2.PageObjects.login_page import LoginPage
 from web.web_po.web_po_v2.PageObjects.index_page import IndexPage
@@ -12,7 +18,7 @@ from web.web_po.web_po_v2.TestDatas import Global_Datas as gd
 from web.web_po.web_po_v2.TestDatas import login_datas as ld
 
 
-@ddt.ddt
+@ddt
 class TestLogin(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -43,9 +49,9 @@ class TestLogin(unittest.TestCase):
         self.assertTrue(self.index_page.check_user_ele_exists())   # 老师写法的断言
 
     # @unittest.skip
-    @ddt.data(*ld.wrong_data_1)
-    # @ddt.unpack # 注意：这里不需要再解包---待研究
-    def test_login_1_wrongData(self, data):
+    @data(*ld.wrong_data_1)
+    @unpack  # 注意：这里不需要再解包？---待研究===研究结果：可以不解包传入整个data,但是解包后可以直接传入字段key
+    def test_login_1_wrongData(self, user, pwd, check):   # 尝试增加解包步骤后，直接传入字典列表中字典的字段的KEY
         # 密码为空
         # 前置条件：打开浏览器，进入登录页面
         # 步骤：登录页面-输入账号,不输入密码，点击登录
@@ -55,13 +61,13 @@ class TestLogin(unittest.TestCase):
         # 账号名为空，""/"python" "请输入手机号"；
         # 账号格式错误，10位"1850000000"或者12位"185000000000"/"python" "请输入正确的手机号"；
 
-        self.login_page.login(data["user"], data["pwd"])
-        self.assertEqual(self.login_page.get_error_msg(), data["check"])
+        self.login_page.login(user, pwd)
+        self.assertEqual(self.login_page.get_error_msg(), check)
 
     # @unittest.skip
-    @ddt.data(*ld.wrong_data_2)
-    # @ddt.unpack
-    def test_login_2_wrongData(self, data):
+    @data(*ld.wrong_data_2)
+    @unpack
+    def test_login_2_wrongData(self, user, pwd, check):
         # 密码错误
         # 前置条件：打开浏览器，进入登录页面
         # 步骤：登录页面-输入账号,输入错误密码，点击登录
@@ -70,8 +76,8 @@ class TestLogin(unittest.TestCase):
         # 步骤相同，其他场景：
         # 账号未注册，"18500000000"/"python" "此账号没有经过授权，请联系管理员!"
 
-        self.login_page.login(data["user"], data["pwd"])
-        self.assertEqual(self.login_page.get_error_toast(), data["check"])
+        self.login_page.login(user, pwd)
+        self.assertEqual(self.login_page.get_error_toast(), check)
 
 
 if __name__ == "__main__":
