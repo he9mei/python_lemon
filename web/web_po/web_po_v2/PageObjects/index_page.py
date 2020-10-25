@@ -13,9 +13,11 @@ class IndexPage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
+    # 我自己写的
     def wait(self, locator):
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))
 
+    # 我自己写的
     def locate_element(self, locator):
         return self.driver.find_element(*locator)
 
@@ -35,3 +37,7 @@ class IndexPage:
             return False
         else:
             return True
+
+    # 默认点击第一个标
+    def click_bid_button(self):
+        pass
