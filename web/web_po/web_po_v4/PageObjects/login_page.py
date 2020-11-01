@@ -4,7 +4,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from web.web_po.web_po_v2.PageLocators.login_page_locator import LoginPageLocator as loc
+from web.web_po.web_po_v4.PageLocators.login_page_locator import LoginPageLocator as loc
 # 问题：在页面对象类调用driver的方法时，因为driver是外部传入的，这里写代码时无法自动弹起driver相关方法
 # 解决-小技巧：
 # （1）导入from selenium.webdriver.remote.webdriver import WebDriver
@@ -24,11 +24,11 @@ class LoginPage:
     def locate_element(self, locator):
         return self.driver.find_element(*locator)
 
-    def login(self, account, pwd):
+    def login(self, user, pwd):
         # 等待元素出现
-        self.wait(loc.loc_input_account)
+        self.wait(loc.loc_input_user)
         # 输入用户名
-        self.driver.find_element(*loc.loc_input_account).send_keys(account)
+        self.driver.find_element(*loc.loc_input_user).send_keys(user)
         # 输入密码
         self.locate_element(loc.loc_input_pwd).send_keys(pwd)
         # 点击登录按钮

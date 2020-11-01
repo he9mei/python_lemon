@@ -6,10 +6,8 @@ import unittest
 from selenium import webdriver
 from time import sleep
 
-from web.web_po.web_po_v2.PageObjects.login_page import LoginPage
-from web.web_po.web_po_v2.PageObjects.index_page import IndexPage
-from web.web_po.web_po_v2.TestDatas import Global_Datas as gd
-from web.web_po.web_po_v2.TestDatas import login_datas as ld
+from web.web_po.web_po_v4.PageObjects.login_page_2 import LoginPage
+from web.web_po.web_po_v4.PageObjects.index_page import IndexPage
 
 
 class TestLogin(unittest.TestCase):
@@ -34,10 +32,10 @@ class TestLogin(unittest.TestCase):
         # 测试数据：18684720553/python
         # login_page = LoginPage(self.driver)
         # index_page = IndexPage(self.driver)
-        self.login_page.login(account="18684720553", pwd="python")
+        self.login_page.login(user="18684720553", pwd="python")
         # self.assertIn("我的帐户", self.index_page.get_account_text())   # 我自己写法的断言
         # self.assertEqual(self.index_page.check_user_ele_exists(), True)  # 老师写法的断言
-        self.asserTrue(self.index_page.check_user_ele_exists())   # 老师写法的断言
+        self.assertTrue(self.index_page.check_user_ele_exists())   # 老师写法的断言
 
     # @unittest.skip
     def test_login_1_noPWD(self):  # 密码为空
@@ -45,7 +43,7 @@ class TestLogin(unittest.TestCase):
         # 步骤：登录页面-输入账号,不输入密码，点击登录
         # 断言：登录页面-错误信息:请输入密码
         # 测试数据：18684720553/空
-        self.login_page.login(account="18684720553", pwd="")
+        self.login_page.login(user="18684720553", pwd="")
         self.assertEqual(self.login_page.get_error_msg(), "请输入密码")
     # 账号名为空，""/"python" "请输入手机号"；
     # 账号格式错误，10位"1850000000"或者12位"185000000000"/"python" "请输入正确的手机号"；
@@ -56,7 +54,7 @@ class TestLogin(unittest.TestCase):
         # 步骤：登录页面-输入账号,输入错误密码，点击登录
         # 断言：登录页面-错误信息:帐号或密码错误!
         # 测试数据：18684720553/111111
-        self.login_page.login(account="18684720553", pwd="111111")
+        self.login_page.login(user="18684720553", pwd="111111")
         self.assertEqual(self.login_page.get_error_toast(), "帐号或密码错误!")
     # 账号未注册，"18500000000"/"python" "此账号没有经过授权，请联系管理员!"
 

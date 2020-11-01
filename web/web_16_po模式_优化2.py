@@ -13,5 +13,8 @@ web-第4周-第3节课 对应web_po_v4
 补充：
 关于引入，包与包之前只允许单向引入，不能双向引入。如pageLocators和pageObjects
 
-# web-第4周-第3节课 35分钟
+# web-第4周-第3节课 做的事情
+1.在Common中的basepage封装常用的方法，我们称这种思想为关键字封装，见basepage.py
+2.改造PageObjects中的页面以及页面操作，见login_page_2.py
+3.执行测试用例，检查basepage封装是否有问题，检查页面操作是否OK---用test_login.py验证，可以通过，但是没有截图，没有日志
 '''

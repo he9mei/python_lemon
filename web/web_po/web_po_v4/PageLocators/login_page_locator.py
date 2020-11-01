@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 class LoginPageLocator:
     # 账号输入框
-    loc_input_account = (By.NAME, "phone")
+    loc_input_user = (By.NAME, "phone")
     # 密码输入框
     loc_input_pwd = (By.NAME, "password")
     # 登录按钮
