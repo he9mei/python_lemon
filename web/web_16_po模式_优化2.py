@@ -17,4 +17,7 @@ web-第4周-第3节课 对应web_po_v4
 1.在Common中的basepage封装常用的方法，我们称这种思想为关键字封装，见basepage.py
 2.改造PageObjects中的页面以及页面操作，见login_page_2.py
 3.执行测试用例，检查basepage封装是否有问题，检查页面操作是否OK---用test_login.py验证，可以通过，但是没有截图，没有日志
+
+备注：
+unittest没有全局级别的setup和teardown
 '''
