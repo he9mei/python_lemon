@@ -3,8 +3,18 @@
 import pytest
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_login_pytest_fixture.py"])
+    # pytest.main(["-s", "-v", "test_login_pytest_fixture.py"])
     # terminal中的当前路径不在TestCases下,该main文件在TestCases下---可以正常使用该main方法执行TestCases下的用例。
+
+    # pytest.main(["-s", "-v", "test_login_pytest_fixture.py", "test_study_copy.py"])
+    # 练习session和module级别的前置和后置
+
+    # pytest.main(["-s", "-v", "test_login_pytest_fixture.py::TestLogin::test_login_1_wrongData"])
+    # 练习参数化
+
+    # pytest.main(["-s", "-v", "test_login_pytest_fixture.py", "--html=Outputs/repors/report.html"])
+    pytest.main(["-s", "-v", "test_login_pytest_fixture.py", "--html=../Outputs/repors/report.html"])
+    # "--html=../Outputs/repors/report.html"  因为我的main.py文件在TestCases下，而Outputs在当前路径的上一级
 
 '''
 --->pytest -s -v test_login_pytest_fixture.py

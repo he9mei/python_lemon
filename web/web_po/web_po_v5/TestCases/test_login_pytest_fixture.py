@@ -7,8 +7,10 @@ from time import sleep
 import pytest
 from web.web_po.web_po_v5.PageObjects.login_page_2 import LoginPage
 from web.web_po.web_po_v5.PageObjects.index_page import IndexPage
+from web.web_po.web_po_v5.TestDatas import login_datas as ld
 
 
+@pytest.mark.demo
 @pytest.mark.usefixtures("access_web")  # 使用了access_web函数的前置和后置
 # 这是fixture的第1种用法；第2种用法是把conftest.py的函数直接当做参数传入
 # 目前因为需要返回值，所以需要第2种方式传值，只用第1种方式是不能接收返回值的。此时第1种方式可以写也可以不写。
@@ -16,8 +18,13 @@ from web.web_po.web_po_v5.PageObjects.index_page import IndexPage
 # refresh作用域是function，可以在class前装饰，也可以在测试用例前装饰。
 # 在class前装饰，表示该class下的所有测试用例都需要使用refresh后置
 class TestLogin:
+    # 将fixture写在测试用例中
+    @pytest.fixture(scope="function")
+    def demo(self):
+        print("==login独有前置==")
 
-    def test_login_1_noPWD(self,access_web):  # 密码为空
+    @pytest.mark.usefixtures("demo")
+    def test_login_1_noPWD(self,access_web, my_session):  # 密码为空
         # 前置条件：打开浏览器，进入登录页面
         # 步骤：登录页面-输入账号,不输入密码，点击登录
         # 断言：登录页面-错误信息:请输入密码
@@ -26,6 +33,22 @@ class TestLogin:
         assert LoginPage(access_web).get_error_msg() == "请输入密码"
         # 账号名为空，""/"python" "请输入手机号"；
         # 账号格式错误，10位"1850000000"或者12位"185000000000"/"python" "请输入正确的手机号"；
+        print("my_session的值是{}".format(my_session))
+
+    # 对第1个测试用例进行改造，实现同类型数据的参数化===重要实例
+    # @ddt.data(*ld.wrong_data_1)
+    @pytest.mark.parametrize("data", ld.wrong_data_1)   # 这里直接把ld文件中的数据拿过来赋值给data，之后的使用与ddt一样
+    def test_login_1_wrongData(self, data, access_web):
+        # 密码为空
+        # 前置条件：打开浏览器，进入登录页面
+        # 步骤：登录页面-输入账号,不输入密码，点击登录
+        # 断言：登录页面-错误信息:请输入密码
+        # 测试数据：18684720553/空
+        # 步骤相同，其他场景：
+        # 账号名为空，""/"python" "请输入手机号"；
+        # 账号格式错误，10位"1850000000"或者12位"185000000000"/"python" "请输入正确的手机号"；
+        LoginPage(access_web).login(data["user"], data["pwd"])
+        assert LoginPage(access_web).get_error_msg() == data["check"]
 
     def test_login_2_wrongPWD(self, access_web):  # 密码错误
         # 前置条件：打开浏览器，进入登录页面
@@ -43,6 +66,8 @@ class TestLogin:
         # 测试数据：18684720553/python
         LoginPage(access_web).login(user="18684720553", pwd="python")
         assert IndexPage(access_web).check_user_ele_exists()  # 老师写法的断言 # 修改断言为assert+表达式的形式
+
+
 
 
 

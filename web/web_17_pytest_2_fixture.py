@@ -42,4 +42,19 @@ conftest.py
 pytest提供了conftest.py文件，可以将fixture定义在此文件中。
 运行测试用例时，不需要去导入这个文件，会自动去查找conftest.py文件，然后去找到对应的fixture。
 
+补充：
+我有许多不同的前置、后置，怎么办？
+（1）层级的conftest.py
+（2）有些前置后置，只有自己的测试用例要用，可以直接卸载测试用例文件中定义fixture函数。
+3.fixture如果应用在测试用例上？---测试用例中主动引用需要的fixture
+1）.通过装饰器直接使用
+（1）用例不需要使用fixture的返回值：
+ 测试用例、测试类前 @pytest.mark.usefixture("fixtuer的函数名称")
+（2）用例需要使用fixture的返回值：
+第一步：测试用例、测试类前 @pytest.mark.usefixture("fixtuer的函数名称")
+第二步：将fixture函数名称作为测试用例的参数传入。
+2).可以使用多个前置后置，但是不能冲突。比如:打开2次浏览器
+3).session级别的fixture可以将autouse设置为True
+4).pytest用例的执行顺序：文件名称的顺序---测试用例的代码顺序
+
 '''

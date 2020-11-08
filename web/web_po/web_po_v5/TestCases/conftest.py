@@ -44,3 +44,17 @@ def refresh(access_web):   # aceess_web就相当于driver，直接拿来用 # �
 '''
 
 
+# 再练习一下session和module级别的前置和后置
+@pytest.fixture(scope="session")  # 作用域整个会话，需要返回值,直接传参即可。整个会话只会被执行一次。
+def my_session():
+    print("====session级别的前置====")
+    yield 888
+    print("====session级别的后置====")
+
+
+# @pytest.fixture(scope="module", autouse=True)  # 自动使用打开，如果没有返回值，则不需要再调用
+@ pytest.fixture(scope="module")  # 不打开自动使用时，如果要在整个模块使用，且不使用返回值，则在py文件第1个用例调用就可以---自己理解
+def my_module():
+    print("====module级别的前置====")
+    yield
+    print("====module级别的后置====")
