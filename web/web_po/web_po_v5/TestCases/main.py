@@ -12,9 +12,13 @@ if __name__ == "__main__":
     # pytest.main(["-s", "-v", "test_login_pytest_fixture.py::TestLogin::test_login_1_wrongData"])
     # 练习参数化
 
-    # pytest.main(["-s", "-v", "test_login_pytest_fixture.py", "--html=Outputs/repors/report.html"])
-    pytest.main(["-s", "-v", "test_login_pytest_fixture.py", "--html=../Outputs/repors/report.html"])
+    # pytest.main(["-s", "-v", "test_login_pytest_fixture.py", "--html=Outputs/reports/report.html"])
+    # pytest.main(["-s", "-v", "test_login_pytest_fixture.py", "--html=../Outputs/reports/report.html"])
     # "--html=../Outputs/repors/report.html"  因为我的main.py文件在TestCases下，而Outputs在当前路径的上一级
+
+    # allure报告
+    pytest.main(["-s", "-v", "test_login_pytest_fixture.py", "--alluredir=../Outputs/allure_reports/"])
+    # 打开allure报告 -->allure serve ../Outputs/allure_reports/
 
 '''
 --->pytest -s -v test_login_pytest_fixture.py
