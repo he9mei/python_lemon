@@ -12,7 +12,7 @@ pytest是基于unittest之上的单元测试框架。
 1.自动发现测试模块和测试方法。
 2.断言使用assert+表达式即可。
 3.可以设置会话级、模块级、类级、函数级的fixtures。
-4.有丰富的插件库，母亲那在600个以上。===如支持allue报告
+4.有丰富的插件库，目前在600个以上。===如支持allue报告
 
 安装命令：
 pip install pytest
@@ -89,7 +89,7 @@ class TestClass(object):
     pytestmark=[pytest.mark.标签1,pytest.mark.标签2]  # 多标签模式
 （2）在模块文件里，同理（py文件下，所有测试函数和测试类里的测试函数，都有该标签）
 import pytest
-pytest=pytest.mark.已注册标签名
+pytestmark=pytest.mark.已注册标签名
 pytestmark=[pytest.mark.标签1,pytest.mark.标签2]  # 多标签模式
 
 实践：
