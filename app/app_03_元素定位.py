@@ -60,5 +60,47 @@ driver.find_element_by_android_uiautomator()  ---之后单独再讲
 
 
 ===app_第2周—第1課-1小时10分钟===
+PPT总结：
+appium-app页面元素定位
+1.通过id定位元素：resource-id
+2.通过ClassName定位：classname
+3.通过AccessibilityId定位：content-desc
+4.通过AndroidUiAutomator定位
+5.通过xpath定位
+6.坐标
+# 常用元素定位
+# driver.find_element_by_id()
+# driver.find_element_by_class_name()
+# driver.find_element_by_accessibility_id()
+# driver.find_element_by_android_uiautomator()
+# driver.find_element_by_xpath()
+
+===关于AndroidUiAutomator定位===
+独立于appium和selenium框架，是安卓自带的框架，使用java语言写的。
+主要关注UISelector类，只有这个类与元素定位有关。
+注意查看官方文档，需要翻墙，学习包里面有。
+先实例化再调用其方法UiSelector()
+我们常用的定位方法这里都有，
+比如id这里有resourceId(String id)和resourceIdMatches(String regex)正则匹配
+比如text这里有text(String text)全匹配，以及textContains(String text)部分匹配等4种。
+比如content-desc这里有description(String desc)全匹配，以及descriptionContains(String desc)部分匹配等4种。
+比如classname这里有className(String className)等3种。
+用法：
+driver.find_element_by_android_uiautomator()
+以文本举例。因为文本只支持uiautomator和xpath，但是在APP中xpath不是最推荐的。所有我们这里用uiautomator来写。
+# uiautomator用法
+# locator_fuli = 'new UiSelector().text("福利")'     # 注意：单引号里面是java代码，在java中字符串必须使用双引号
+# locator_fuli = 'new UiSelector().text("福利").resourceId("resource-id")'  # 方法返回的的都是UiSelector，可以直接组合定位
+# driver.find_element_by_android_uiautomator(locator_fuli)
+
+补充：如果确定我们的定位是唯一的？可以尝试以下方法
+(1)更新uiautomator之后，能在元素定位看到增加3行数据：xpath相对定位、xpath绝对定位、UiSelector定位
+从xpath可以看到,如果resouce-id是唯一的，这里就只会显示xpath相对定位//class[@resouce-id=""]
+(2)可以直接在appium的元素定位来查看定位信息
+从find by查看，如果xpath是相对定位//class[@resouce-id=""]，说明resouce-id是唯一的。如果显示的xpath绝对定位，则不是唯一。
+（3）还有一种查看元素定位的方式---python独立的元素定位框架
+百度搜索python uiautomator2 github
+https://github.com/openatx/uiautomator2
+
+===app_第2周—第1課-end===
 '''
-from appium import webdriver

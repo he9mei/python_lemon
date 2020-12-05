@@ -21,6 +21,17 @@ driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
 
 driver.implicitly_wait(10)
 
+# 常用元素定位
+# driver.find_element_by_id()
+# driver.find_element_by_class_name()
+# driver.find_element_by_accessibility_id()
+# driver.find_element_by_android_uiautomator()
+# driver.find_element_by_xpath()
+# uiautomator用法
+# locator_fuli = 'new UiSelector().text("福利")'     # 注意：单引号里面是java代码，在java中字符串必须使用双引号
+# locator_fuli = 'new UiSelector().text("福利").resourceId("resource-id")'  # 方法返回的的都是UiSelector，可以直接组合定位
+# driver.find_element_by_android_uiautomator(locator_fuli)
+
 sleep(5)
 driver.quit()
 
