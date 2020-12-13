@@ -48,7 +48,7 @@ driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
 # (2)swipe实际就是用TouchAction来实现封装的
 # 查看driver.swipe()的源码
 def swipe(self, start_x, start_y, end_x, end_y, duration=None):
-    action = TouchAction(self)
+    action = TouchAction(driver)
     action \
         .press(x=start_x, y=start_y) \
         .wait(ms=duration) \
@@ -56,6 +56,41 @@ def swipe(self, start_x, start_y, end_x, end_y, duration=None):
         .release()
     action.perform()
     return self
-# (3)使用TouchAciton解锁九宫格手势密码---还没讲
 
-# app_第2周—第2課-2 01小时15分钟
+# (3)使用TouchAciton解锁九宫格手势密码
+'''
+一个点移动到另外一个点
+如果每个点是单个元素，则传入元素
+如果整个块是一个元素，只能使用坐标。终点左边减去起点坐标，得到元素的高和宽，再计算位置的坐标。
+***
+  *
+'''
+ele = driver.find_element(MobileBy.ID, "id")   # 整个九宫格元素
+ele_loc = ele.location  # 元素的起点坐标（x,y）
+ele_size = ele.size  # 元素的大小（高、宽）
+start_x = ele_loc["x"]
+start_y = ele_loc["y"]
+step = ele_size["height"]/6  # 元素的高、宽均分为6份（其他地方的九宫格不一定是这样，老师举例的是这样）
+
+# 计算每个点的坐标
+p1 = (start_x+step, start_y+step)
+p2 = (p1[0]+2*step, p1[1])
+p3 = (p2[0]+2*step, p2[1])
+p4 = (p3[0], p3[1]+2*step)
+
+# 执行操作
+action = TouchAction(driver)
+action\
+    .press(x=p1[0], y=p1[1]).wait(200)\
+    .move_to(x=p2[0], y=p2[1]).wait(200)\
+    .move_to(x=p3[0], y=p3[1]).wait(200)\
+    .move_to(x=p4[0], y=p4[1]).wait(200)\
+    .release()
+action.perform()
+
+'''
+其他操作，比较简单就不讲了---见ppt截图
+Android KEYCODE键值
+可参考：https://blog.csdn.net/crisschan/article/details/50419963
+
+'''
