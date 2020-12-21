@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 
 # 要在哪个平台对哪个设备哪个app进行操作？
 caps = {
-    "automationName": "UiAutomator2",
+    # "automationName": "UiAutomator2",
     # Appium也可以，不过获取toast存在一些问题（以往经验）；官方建议Android6.0以上使用UiAutomator2。默认是Appium（老师没有写这个）
     "platformName": "Android",
     "platformVersion": "10",  # 如果不知道也可以先随便写一个，报错时，appium日志会提示可用的
@@ -20,7 +20,7 @@ caps = {
 }
 
 # 与appium服务器建立连接，并向appium传入启动参数
-driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
+driver = webdriver.Remote("http://0.0.0.0:4723/wd/hub", caps)
 driver.implicitly_wait(10)
 
 # 1.点击“我的”
@@ -28,9 +28,10 @@ driver.find_element_by_id("com.dangdang.buy2:id/tab_personal_iv").click()
 
 # 2.点击“查看关注的宝贝”
 
-# 这里滑动是为了解决，到新页面后找到元素不点击的情况
 # 获取屏幕大小
 size = driver.get_window_size()
+'''
+# 这里滑动是为了解决，到新页面后找到元素不点击的情况
 # 从上向下滑动
 start_x = size["width"]*0.5
 start_y = size["height"]*0.5
@@ -38,7 +39,7 @@ end_x = size["width"]*0.5
 end_y = size["height"]*0.8
 duration = 500
 driver.swipe(start_x, start_y, end_x, end_y, duration)
-
+'''
 loc_favor = (By.ID, "com.dangdang.buy2:id/tv_agile_collect_more")
 try:
     WebDriverWait(driver, 10).until(EC.visibility_of_element_located(loc_favor))
