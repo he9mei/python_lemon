@@ -1,18 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-'''
-以百度地图为例
-一、多点触控---这里实现缩放
-MultiAction只有两个方法add和perform，与多个TouchAction结合使用
-二、输入中文
-desired_caps["unicodeKeyboard"] = True  # 中文输入
-三、按键操作
-driver.press_keycode(3)
-按键对应的code列表，百度即可。
-
-以下是老师的代码：===已在雷电模拟器执行通过
-'''
-
 from appium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -34,10 +21,9 @@ desired_caps["noReset"] = True
 desired_caps["unicodeKeyboard"] = True  # 中文输入
 
 # 与appium服务进行连接，并告诉appium我要干嘛。
-driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
+driver = webdriver.Remote('http://localhost:4723/wd/hub',desired_caps)
 time.sleep(40)
 
-# 以下是地图放大实例
 # 获取屏幕大小
 size = driver.get_window_size()
 # 实例化
