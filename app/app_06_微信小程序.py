@@ -44,7 +44,7 @@ desired_caps["chromeOptions"] = {"androidProcess":"com.tencent.mm:appbrand0"}
 
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from appium.webdriver.common.mobileby import MobileBy as MB
+from appium.webdriver.common.mobileby import MobileBy
 
 #引入appium包
 from appium import webdriver
@@ -82,21 +82,28 @@ driver.implicitly_wait(30)
 #
 time.sleep(5)
 #点击发现
+driver.find_element_by_xpath('//*[contains(@text,"发现")]').click()
 # driver.find_element_by_xpath('//*[@text=\"发现\"]').click()
-driver.find_element_by_id('com.tencent.mm:id/cnh').click()
+# driver.find_element_by_id('com.tencent.mm:id/cnh').click()
 #点击发现里面搜一搜
-# driver.find_element_by_xpath('//*[@text=\"搜一搜\"]').click()
-# driver.find_element_by_id('android:id/title').click()
+# driver.find_element_by_xpath('//*[contains(@text,"搜一搜")]').click()
+time.sleep(3)
 # 尝试点击页面顶部搜索按钮
 driver.find_element_by_id('com.tencent.mm:id/cn1').click()
 
+cons = driver.contexts
+print("进入h5之后的cons:", cons)
+
 #等待搜索框出现
-# loc = (MB.XPATH,'//*[@text="搜索"]')
-loc = (MB.ID, 'com.tencent.mm:id/bhn')
-WebDriverWait(driver,20).until(EC.visibility_of_element_located(loc))
-#点击搜索框
-driver.find_element(*loc).click()
-driver.find_element(*loc).send_keys("柠檬班软件测试")
+# loc = (MobileBy.XPATH, "//*[contains(@text,'搜索')]")
+# # loc = (MB.ID, 'com.tencent.mm:id/bhn')
+# WebDriverWait(driver, 10).until(EC.visibility_of_element_located(loc))
+# #点击搜索框
+# driver.find_element(*loc).click()
+# driver.find_element(*loc).send_keys("柠檬班软件测试")
+
+driver.find_element_by_xpath('//*[contains(@text,"搜索")]').click()
+driver.find_element_by_xpath('//*[contains(@text,"搜索")]').send_keys("柠檬班软件测试")
 time.sleep(5)
 # #点击历史记录中的柠檬班软件测试（采用adb命令坐标点击的方式)
 # print(driver.contexts)
