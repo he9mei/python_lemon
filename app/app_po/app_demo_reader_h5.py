@@ -33,7 +33,7 @@ print("进入h5之前的cons:", cons)  # 进入h5之前的cons: ['NATIVE_APP']
 # 进入h5页面---点击电子书tab
 loc_tab = (MobileBy.ID, 'com.dangdang.reader:id/tab_item_name')
 WebDriverWait(driver, 10).until(EC.visibility_of_all_elements_located(loc_tab))
-driver.find_elements(*loc_tab)[1].click()
+driver.find_elements(*loc_tab)[0].click()
 
 # 等待webview元素可见
 loc_webview = (MobileBy.CLASS_NAME, "android.webkit.WebView")
@@ -52,8 +52,11 @@ print("已切换到：WEBVIEW_com.dangdang.reader")
 
 # 定位web元素,并操作（定位方式见笔记）---可以先用UC devtools拿到链接再用chrome查看元素（直接用uc devtools查看不是很好用）
 # loc_h5 = (MobileBy.XPATH, "//dl[@alt='促销']")
-loc_h5 = (By.XPATH, "//dl[@alt='促销']")
-WebDriverWait(driver, 10).until(EC.visibility_of_element_located(loc_h5))   # ====报错===
+# loc_h5 = (By.XPATH, "//dl[@alt='促销']")
+# loc_h5 = (MobileBy.XPATH, '//div[@id="widget_inlet-17529"]/div/dl[3]') # 电子书-促销
+# loc_h5 = (MobileBy.XPATH, '//div[@id="widget_carousel-17675"]') #  电子书-banner
+loc_h5 = (MobileBy.XPATH, '//div[@id="widget_inlet-21390"]/div/dl[1]')  # 精选-全部分类
+# WebDriverWait(driver, 10).until(EC.visibility_of_element_located(loc_h5))   # ====报错===
 driver.find_element(*loc_h5).click()
 sleep(2)
 driver.press_keycode(4)
