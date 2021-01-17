@@ -1,0 +1,10 @@
+platformName: Android   # 最外层是字典
+platformVersion: 7.1.1
+deviceName:
+  - d1   # 字典内嵌列表
+  - True
+  - hello
+info:
+  name: 111   # 字典内嵌字典
+  sex: 222
+  age: 333

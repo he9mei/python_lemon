@@ -104,6 +104,6 @@ pytestmark=[pytest.mark.标签1,pytest.mark.标签2]  # 多标签模式
 
 3、运行
 可以命令行运行，也可以右键运行（老师的版本还可以识别单个用例和类，直接点击运行），还可以写在main文件运行。
-main.py
+run.py
 
 '''

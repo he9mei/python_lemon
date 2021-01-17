@@ -21,7 +21,7 @@ genaral---jdk使用（system），代码源使用none（工作中需要在git和
 build---我们执行我们的main.py文件（main.py配置了执行的命令）先把工作目录切换到main.py文件
 ---构建步骤：windows选择excute windows batch command
 --->cd （main.py所在的项目路径）
---->python main.py
+--->python run.py
 post build actions---选择allure report
 ---这里需要填写已经生成的allure报告文件的路径allure-results。注意这个路径必须是相对于jenkins工作路径的相对路径，不可以是绝对路径。这样就有一个问题，报告的路径是在项目路径下，并不在jenkins工作空间。采取折中的办法，将jenkins工作空间切换到我的项目路径。
 （general---Use custom workspace选中，填写项目路径，呈现名字可以不改）

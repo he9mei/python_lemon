@@ -7,8 +7,8 @@ fixture---不能与unittest一起用
 数据准备和数据清理，写在一个函数中；实现共享。
 conftest.py文件，最好放在testCases包内，将所有前置后置放在这个文件中。同级目录下的用例和包内的用例，都可以共享。
 重点：
-test_study.py + pytest.ini + main.py 配合练习mark
-conftest.py + test_login_pytest_fixture.py  + main.py 配合练习fixture
+test_study.py + pytest.ini + run.py 配合练习mark
+conftest.py + test_login_pytest_fixture.py  + run.py 配合练习fixture
 '''
 
 '''
