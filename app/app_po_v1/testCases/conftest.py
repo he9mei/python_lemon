@@ -35,3 +35,24 @@ def driver():
     sleep(5)
     driver.quit()
 
+
+# 如果特殊用例需要不同的caps配置,可以用以下方法；无特殊要求用以上即可。
+# def basedriver(noRest=True, **kwargs):
+#     fs = open(dir_config.caps_dir + "/" + "desired_caps.yaml")
+#     desired_caps = yaml.load(fs, yaml.FullLoader)
+#     fs.close()
+#
+#     if noRest == False:
+#         desired_caps["noRest"] == False
+#     if kwargs:
+#         for key,value in kwargs.items():
+#             desired_caps[key] == value
+#
+#     driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_caps)
+#     return driver
+
+
+# 是否已登录判断
+# 可以用文本判断，文本是“未登录用户”则未登录，进行登录操作，否则已登录，pass
+def is_logined():
+    pass
