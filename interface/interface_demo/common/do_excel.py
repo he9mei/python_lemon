@@ -3,7 +3,7 @@
 
 # 2-2读取excel
 import openpyxl
-from interface.http_request import HTTPRequest
+from interface.interface_demo.common.http_request import HTTPRequest
 
 
 # 打开文件
@@ -41,7 +41,7 @@ class DoExcel:
         workbook = openpyxl.load_workbook(self.file_name)
         sheet = workbook[self.sheet_name]
         sheet.cell(row, column=7).value = actual
-        sheet.cell(row, column=7).value = result
+        sheet.cell(row, column=8).value = result
         workbook.save(self.file_name)
         workbook.close()
 
@@ -49,17 +49,21 @@ class DoExcel:
 if __name__ == "__main__":
     excel = DoExcel("E:\\cases.xlsx", "login")
     cases = excel.get_cases()
+
     for case in cases:
-        data = eval(case["data"])  # 将字符串转换成字典格式（存放在excel中的都是当做字符串）
+        print("现在运行的测试用例：{}".format(case["title"]))
+        data = eval(case["data"])  # 此处存放在excel的data是字符串，需要转换成字典
         request = HTTPRequest(method=case["method"], url=case["url"], data=data)
         actual = request.get_text()
         if actual == case["expected"]:
             result = "PASS"
         else:
             result = "FAIL"
-        excel.write_result(case["case_id"] + 1, actual, result)
+        excel.write_result(case["case_id"] + 1, actual, result)  # 此处Excel中的case_id是int
 
     print("执行完毕！")
 
 # 如果文件本身是打开的会报错，需要先关闭
-# 执行成功，视频看到2-2的50分钟
+
+
+
