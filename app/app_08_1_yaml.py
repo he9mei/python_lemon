@@ -44,7 +44,7 @@ PyYAMAL安装：
 2.使用yaml的load()函数
 示例代码：
 fs = open(os.path.join(caps_dir,"cpas.yaml"))
-datas = yaml.load(fs)
+data = yaml.load(fs)
 
 学习记录见：learning_yaml包和app_po_v1中caps、common中的dir_config、conftest.py、testCase
 

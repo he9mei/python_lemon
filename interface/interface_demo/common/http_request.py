@@ -29,6 +29,7 @@ class HTTPRequest:
         return self.resp.headers
 
 
+# '''
 if __name__ == "__main__":
     # 登录接口
     url = "http://test.lemonban.com/futureloan/mvc/api/member/login"
@@ -36,6 +37,14 @@ if __name__ == "__main__":
     request = HTTPRequest("get", url, data)
     # print(request.resp.text)
     print(request.get_text())
+
+    # print(request.get_cookies()[“JSESSIONID”])  # <RequestsCookieJar[]> 现在cookie是空的，有问题了
+    # 老师这里是为了从返回的cookie对象中拿到sessionid
+    # cookies={“JSESSIONID”, request.get_cookies()[“JSESSIONID”]}
+    # 这里是为了之后的写入cookie提供思路。因为直接用get_cookies()写入是对象地址，再拿出来是字符串，这样不行
+    # 后续再验证
+    # 思考cookie全局变量？
+    # 下节课：环境配置？参数化？
 
     # 充值接口
     url = "http://test.lemonban.com/futureloan/mvc/api/member/recharge"

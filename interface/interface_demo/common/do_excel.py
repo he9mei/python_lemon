@@ -45,7 +45,7 @@ class DoExcel:
         workbook.save(self.file_name)
         workbook.close()
 
-
+'''
 if __name__ == "__main__":
     excel = DoExcel("E:\\cases.xlsx", "login")
     cases = excel.get_cases()
@@ -64,6 +64,6 @@ if __name__ == "__main__":
     print("执行完毕！")
 
 # 如果文件本身是打开的会报错，需要先关闭
-
+'''
 
 
