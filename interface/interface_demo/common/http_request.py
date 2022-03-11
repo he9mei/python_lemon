@@ -29,7 +29,7 @@ class HTTPRequest:
         return self.resp.headers
 
 
-# '''
+'''
 if __name__ == "__main__":
     # 登录接口
     url = "http://test.lemonban.com/futureloan/mvc/api/member/login"
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     print(request.get_json())
 
 
-
+'''
 
 
 

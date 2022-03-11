@@ -23,16 +23,25 @@ class DoExcel:
         workbook = openpyxl.load_workbook(self.file_name)
         sheet = workbook[self.sheet_name]
         cases = []
-        max_row = sheet.max_row
-        for r in range(2, max_row + 1):
+
+        # for r in range(2, sheet.max_row + 1):
+        #     case = {}
+        #     case["case_id"] = sheet.cell(row=r, column=1).value
+        #     case["title"] = sheet.cell(row=r, column=2).value
+        #     case["url"] = sheet.cell(row=r, column=3).value
+        #     case["data"] = sheet.cell(row=r, column=4).value
+        #     case["method"] = sheet.cell(row=r, column=5).value
+        #     case["expected"] = sheet.cell(row=r, column=6).value
+        #     cases.append(case)
+
+        # 对以上for循环进行优化：双层循环
+        for r in range(2, sheet.max_row + 1):
             case = {}
-            case["case_id"] = sheet.cell(row=r, column=1).value
-            case["title"] = sheet.cell(row=r, column=2).value
-            case["url"] = sheet.cell(row=r, column=3).value
-            case["data"] = sheet.cell(row=r, column=4).value
-            case["method"] = sheet.cell(row=r, column=5).value
-            case["expected"] = sheet.cell(row=r, column=6).value
+            for i in range(1, sheet.max_column + 1):
+                key = sheet.cell(row=1, column=i).value
+                case[key] = sheet.cell(row=r, column=i).value
             cases.append(case)
+
         workbook.save(self.file_name)
         workbook.close()
         return cases
@@ -44,6 +53,7 @@ class DoExcel:
         sheet.cell(row, column=8).value = result
         workbook.save(self.file_name)
         workbook.close()
+
 
 '''
 if __name__ == "__main__":
@@ -65,5 +75,3 @@ if __name__ == "__main__":
 
 # 如果文件本身是打开的会报错，需要先关闭
 '''
-
-
