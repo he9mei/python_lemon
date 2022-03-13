@@ -66,19 +66,3 @@ if __name__ == "__main__":
 # 如果文件本身是打开的会报错，需要先关闭
 
 
-'''
-问题：push失败
--->git config --global credential.helper store
--->git push
-he9mei
-8uhb*UHBhhm
-错误：Support for password authentication was removed on August 13, 2021. Please use a personal access token instead
-需要token代替密码登录,如何生成token？
-进入Git后，头像下方Settings-->Developer settings-->personal access token
-填写note，选择90天，勾选repo，Generate token-->
-https://github.com/settings/tokens
-token：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
-再次push时，密码使用token即可
-参考：https://blog.csdn.net/weixin_41010198/article/details/119698015
-'''
-
