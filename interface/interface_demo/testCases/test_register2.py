@@ -38,12 +38,17 @@ class TestRegister(unittest.TestCase):
         try:
             self.assertEqual(case["expected"], actual)
             self.excel.write_result(case["case_id"] + 1, actual, "PASS")
+
+            # 如果注册成功，检查数据是否有新增记录
+            if request.get_json()['msg'] == '注册成功':
+                sql = 'select * from future.member where mobilephone={}'.format(max_phone)
+                member = self.mysql.query_one(sql)
+                self.assertIsNotNone(member)
+
         except AssertionError as e:
             self.excel.write_result(case["case_id"] + 1, actual, "FAIL")
             print(e)
             raise
-
-        # 需要增加数据库校验（自己实现）
 
     @classmethod
     def tearDownClass(cls):   # 一个类使用完成后一次关闭
