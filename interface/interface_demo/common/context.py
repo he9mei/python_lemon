@@ -8,7 +8,7 @@ from interface.interface_demo.common.config import config_handler
 
 
 class Context:
-    loan_id = None  # 标的ID，是变化的，需要加标成功后，到数据库查
+    # loan_id = None  # 标的ID，是变化的，需要加标成功后，到数据库查   # 可以不用定义
 
     @classmethod
     # @staticmethod  这里设置成类方法或者静态方法，是为了不用实例化就能用。直接放在类外面也可以。
@@ -22,7 +22,7 @@ class Context:
                 value = config_handler.config_parser.get('userdata', key)
             # 如果EXCEL中匹配到的正则，在配置文件中没有找到对应的数据，则重新取值
             except configparser.NoOptionError as e:
-                if hasattr(Context, key):
+                if hasattr(Context, key):   # 为什么前面有定义，这里还判断？实际前面可以不用定义，直接Setattr就可以
                     value = getattr(Context, key)
                 # raise e
 

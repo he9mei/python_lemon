@@ -7,6 +7,7 @@ from interface.interface_demo.common.do_excel import DoExcel
 from ddt import ddt, data
 from interface.interface_demo.common import contants
 from interface.interface_demo.common.context import Context
+from interface.interface_demo.common.logger import log
 
 
 # 注意：直接在这里右键执行时，定位class执行，而非定位用例执行。否则会报错。
@@ -22,7 +23,8 @@ class TestLogin(unittest.TestCase):
 
     @data(*cases)  # 解包
     def test_login(self, case):
-        print("正在执行用例：{}".format(case["title"]))
+        # print("正在执行用例：{}".format(case["title"]))
+        log.info("正在执行用例：{}".format(case["title"]))
 
         # 新增：正则替换实现参数化(excel中的数据，用配置文件中的数据替换)
         case['data'] = Context.replace(case['data'])

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
+-----最新秘钥解决方案------
 步骤1：Generating a new SSH key
 -->ssh-keygen -t ed25519 -C "396167189@qq.com"
 然后都默认，点击enter即可
@@ -28,7 +29,11 @@ $ ssh-add ~/.ssh/id_ed25519 命令2示例
 步骤3：Add the SSH key to your account on GitHub
 到Git网页，gitHub点击用户头像，选择setting，
 新建一个SSH Key,取个名字id_ed25519，把id_ed25519.pub拷贝的秘钥复制进去，添加就好啦。
+
+验证 ：重新PUSH，可以了
 ------------------------------
+
+尝试：Git desktop（不需要秘钥）----暂时没有用，还是用的网页版---
 以前项目的地址：C:\Users\lipan\PycharmProjects\python_lemon
 使用Git desktop之后，
 克隆url: git@github.com:he9mei/python_lemon.git
