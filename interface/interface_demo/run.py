@@ -7,6 +7,15 @@ function: 统一的执行入口；收集用例、执行用例；生产报告
 
 import unittest
 from interface.interface_demo.common import contants
+import sys
+import os
+
+root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print(sys.path)
+sys.path.append(root)  # 把python_lemon的目录加到我们的Python编译环境下面
+sys.path.append(root+'/interface')  # 把python_lemon/interface的目录加到我们的Python编译环境下面
+print(sys.path)
+# 在terminal路径interface_demo>执行python run.py----还是有问题,可能是因为我层数太多了（老师的可以了）
 
 # 收集用例
 discover = unittest.defaultTestLoader.discover(contants.testCases_dir, pattern="test_*py")
@@ -22,3 +31,4 @@ with open(contants.report_file, "wb+") as file:   # html二进制写入
     runner.run(discover)
     
 '''
+unittest.TextTestRunner().run(discover)
