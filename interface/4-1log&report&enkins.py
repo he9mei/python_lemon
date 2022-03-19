@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
+4-1
 1.log---见logger.py
 
 2.report---见run.py
@@ -62,6 +63,7 @@ python 项目名/run.py
 3.立即构建
 出现问题：找不到路径---需要把根目录加入到编译环环境
 
+4-2
 4.插件管理
 插件安装：如git
 报告publish html report
