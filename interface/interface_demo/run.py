@@ -10,7 +10,7 @@ from interface.interface_demo.common import contants
 import sys
 import os
 from interface.interface_demo.common.HTMLTestRunner import HTMLTestRunner
-from interface.interface_demo.testCases.test_login import TestLogin
+from interface.interface_demo.testCases.test_login2 import TestLogin
 
 root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 print(sys.path)
@@ -20,10 +20,13 @@ print(sys.path)
 # 在terminal路径interface_demo>执行python run.py----还是有问题,可能是因为我层数太多了（老师的可以了）
 
 # 收集用例
+suite = unittest.TestSuite()
+suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestLogin))
+# discover收集
 discover = unittest.defaultTestLoader.discover(contants.testCases_dir, pattern="test_*py")
 
 # 执行用例
-unittest.TextTestRunner().run(discover)
+# unittest.TextTestRunner().run(discover)
 
 # 执行用例并生成报告
 # （导入HTMLTestRunnerNew这个文件，放在common中；这里需要导入这个文件）
@@ -38,7 +41,10 @@ unittest.TextTestRunner().run(discover)
 
 
 # 我自己导入了HTMLTestRunner.py
-# runner = HTMLTestRunner(stream=contants.report_file,
-#                         title="我的测试报告",
-#                         description="运行环境：mac")
-# runner.run(discover, rerun=1, save_last_run=True)
+# 执行用例并生成报告
+# （导入HTMLTestRunner.py这个文件，放在common中）
+with open(contants.report_file, "wb+") as file:   # html二进制写入
+    runner = HTMLTestRunner(stream=file,
+                        title="我的测试报告",
+                        description="运行环境：mac")
+    runner.run(suite, rerun=1, save_last_run=True)
