@@ -6,6 +6,7 @@ from interface.interface_demo.common.http_request import HTTPRequest
 from interface.interface_demo.common.do_excel import DoExcel
 from ddt import ddt, data
 from interface.interface_demo.common import contants
+from interface.interface_demo.common.context import Context
 
 
 # 注意：直接在这里右键执行时，定位class执行，而非定位用例执行。否则会报错。
@@ -13,7 +14,7 @@ from interface.interface_demo.common import contants
 @ddt
 class TestLogin(unittest.TestCase):
     # excel = DoExcel("./data/cases.xlsx", "login")  # 此处路径需要绝对和相对结合，涉及到os模块
-    excel = DoExcel(contants.cases_file, "login")
+    excel = DoExcel(contants.cases_file, "login1")
     cases = excel.get_cases()
 
     def setUp(self):
@@ -22,6 +23,7 @@ class TestLogin(unittest.TestCase):
     @data(*cases)  # 解包
     def test_login(self, case):
         print("正在执行用例：{}".format(case["title"]))
+
         data = eval(case["data"])  # 此处存放在excel的data是字符串，需要转换成字典
         request = HTTPRequest(method=case["method"], url=case["url"], data=data)
         actual = request.get_text()

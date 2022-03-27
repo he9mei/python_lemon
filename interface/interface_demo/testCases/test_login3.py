@@ -7,21 +7,24 @@ from interface.interface_demo.common.do_excel import DoExcel
 from ddt import ddt, data
 from interface.interface_demo.common import contants
 from interface.interface_demo.common.context import Context
+import pytest
 from interface.interface_demo.common.logger import log
-
 
 # 注意：直接在这里右键执行时，定位class执行，而非定位用例执行。否则会报错。
 # 如果要执行testCases中的所有用例，可以在testCases文件夹右键执行
-@ddt
-class TestLogin(unittest.TestCase):
+# @ddt
+# class TestLogin(unittest.TestCase):
+class TestLogin:
+    # excel = DoExcel("./data/cases.xlsx", "login")  # 此处路径需要绝对和相对结合，涉及到os模块
     excel = DoExcel(contants.cases_file, "login")
     cases = excel.get_cases()
-    http_request = HTTPRequest()  # 实例化一次可以执行多个接口
+    http_request = HTTPRequest()
 
     def setUp(self):
         pass
 
-    @data(*cases)  # 解包
+    # @data(*cases)  # 解包
+    @pytest.mark.parametrize('case', cases)  # 使用pytest框架
     def test_login(self, case):
         # print("正在执行用例：{}".format(case["title"]))
         log.info("正在执行用例：{}".format(case["title"]))
@@ -30,13 +33,16 @@ class TestLogin(unittest.TestCase):
         case['data'] = Context.replace(case['data'])
 
         data = eval(case["data"])  # 此处存放在excel的data是字符串，需要转换成字典
+        # request = HTTPRequest(method=case["method"], url=case["url"], data=data)
         resp = self.http_request.request(method=case["method"], url=case["url"], data=data)
+        actual = resp.text
         try:
-            # self.assertEqual(case["expected"], resp.get_text())
-            self.assertEqual(str(case["expected"]), resp.json()["code"])
-            self.excel.write_result(case["case_id"] + 1, resp.text, "PASS")
+            # self.assertEqual(case["expected"], request.get_json()['code'])
+            assert str(case["expected"]) == resp.json()['code']
+            # assert case["expected"] == actual
+            self.excel.write_result(case["case_id"] + 1, actual, "PASS")
         except AssertionError as e:
-            self.excel.write_result(case["case_id"] + 1, resp.text, "FAIL")
+            self.excel.write_result(case["case_id"] + 1, actual, "FAIL")
             print(e)
             raise e
 
