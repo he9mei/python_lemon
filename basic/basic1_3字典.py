@@ -9,7 +9,7 @@ value；任意类型
 字典是无序的，没有索引的概率。
 '''
 my_dict = {}
-my_info = {"name":"huahua", "age": 18}
+my_info = {"name": "huahua", "age": 18}
 print(my_info)
 # 字典的取值是根据key读取value，key必须是唯一的。
 # 字典名[key]
@@ -24,6 +24,21 @@ my_info.pop("age")
 print(my_info)
 # 获取长度
 print(len(my_info))
+# 两个字典合并
+new_dict = my_info.update({"color": "White"})
+print(new_dict)  # None 没有返回值
+my_info2 = {'class': "pyhton17", 'language': 'python'}
+my_info.update(my_info2)
+print(my_info)  # my_info就是合并后的数据
+# 字典和列表嵌套
+# 列表:存储同一类型的数据
+# 字典：表达一个东西的特征
+person_list = [
+    {"name": "张三", "age": 18, "city": "长沙"},
+    {"name": "李四", "age": 20, "city": "上海"},
+    {"name": "王五", "age": 25, "city": "北京"},
+]
+print(person_list[1]["city"])
 
 
 '''

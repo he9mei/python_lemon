@@ -29,10 +29,10 @@ settings---editor---file and coding template---python script:
 print('hello world!')
 print("hello world!")
 print('''hello world!''')
-# "D:\Program Files\Python38\python.exe" C:/Users/lipan/PycharmProjects/python_lemon/basic/basic1_1base.py
+# "D:\Program Files\Python38\python.exe" C:/Users/lipan/PycharmProjects/python_lemon/basic/basic1_1基础语法.py
 # hello world!
 # 也可以直接在cmd輸出：
-# -->python C:/Users/lipan/PycharmProjects/python_lemon/basic/basic1_1base.py
+# -->python C:/Users/lipan/PycharmProjects/python_lemon/basic/basic1_1基础语法.py
 
 # 编写代码时一行写不下时，回车换行写，但是输出不换行（老师这里一行结尾用了\，实际编译不过）
 print('hello world-----------'
