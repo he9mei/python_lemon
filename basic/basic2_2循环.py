@@ -46,7 +46,8 @@ for item in movies:
     print(item)
     if item == "复联4":
         print("我最想看的电影，出来了！！我要买票！！")
-        break   # 退出当前循环
+        break   # 退出循环
+        # continue  # 之后的代码不再执行，直接进入下一次循环
 
 # 列表 == 遍历索引 0，1，2，3，4 = [0,1,2,3,4]
 # range() 生成整数序列。
