@@ -157,5 +157,3 @@ def get_max(list_num):
 
 list_1 = [13, 20, 42, 85, 9, 45]
 get_max(list_1)
-
-# 53fen
