@@ -21,26 +21,29 @@ ps：不需要考虑重复投币。贩卖机只需要知道总的投币数量即
 
 def auto_buyer(money,drink):
     dict_drink = {'橙汁':3.5,'椰汁':4.2,'矿泉水':4.5,'早餐奶':2}
-    if money>10:
+    if money<1 or money>10:
+        print('金额不符合要求！')
         return
     elif drink not in dict_drink.keys():
+        print("没有你要的饮料！")
         return
     elif money-dict_drink[drink]<0:
         print("金额不足，无法购买！")
         return money
     else:
+        print("取走饮料：{}；找零：{}".format(drink, money-dict_drink[drink]))
         return drink,money-dict_drink[drink]
 
-for i in range(4):
-    money = input("请投币（1元，5元，10元）：")
-    drink = input("请选择饮料（橙汁、椰汁、矿泉水、早餐奶）：")
-    money = int(money)
-    resp = auto_buyer(money,drink)
-    if resp is None:
-        pass
-    elif resp == money:
-        print("无法购买，请取走您的钱，或者继续投币！")
-    else:
-        print("取走饮料：{}；找零：{}".format(resp[0],resp[1]))
 
+# money = input("请投币（1元，5元，10元）：")
+# drink = input("请选择饮料（橙汁、椰汁、矿泉水、早餐奶）：")
+# money = int(money)
+# resp = auto_buyer(money,drink)
+
+# 改成不用手动输入，直接传值验证
+# resp=auto_buyer(0.5,'矿泉水')
+# resp=auto_buyer(10,'可乐')
+# resp=auto_buyer(2,'橙汁')
+resp=auto_buyer(10,'矿泉水')
+print(resp)
 
