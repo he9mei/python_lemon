@@ -14,7 +14,7 @@ print(workspace)   # C:\Users\lipan\PycharmProjects\python_lemon\basic
 # 2.列出当前路径下所有的文件和文件夹
 files=os.listdir(workspace)   # 也可以不传参，就是当前文件夹；得到的是文件名称
 print(files)
-# ['basic1_1基础语法.py', 'basic1_2元组.py', 'basic1_2列表.py', 'basic1_2字典.py', 'basic2_1homework.py', 'basic2_1字符串.py', 'basic2_1运算符.py', 'basic2_2循环.py', 'basic2_2控制流if.py', 'basic2_2练习题.py', 'basic2_3函数.py', 'basic2_3双重for循环.py', 'basic3_1作业参考1.py', 'basic3_1作业参考2.py', 'basic3_1作业练习1.py', 'basic3_1作业练习2.py', 'basic3_1函数2.py', 'basic3_2内置函数.py', 'basic3_2变量作用域.py', 'basic3_2模块导入.py', 'basic3_3OS模块.py', 'basic3_3作业参考.py', 'basic3_3作业练习.py', 'basic3_3调试.py', '__init__.py']
+# ['basic1_1基础语法.py', 'basic1_2元组.py', 'basic1_2列表.py', 'basic1_2字典.py', 'basic2_1homework.py', 'basic2_1字符串.py', 'basic2_1运算符.py', 'basic2_2循环.py', 'basic2_2控制流if.py', 'basic2_2练习题.py', 'basic2_3函数1.py', 'basic2_3双重for循环.py', 'basic3_1作业参考1.py', 'basic3_1作业参考2.py', 'basic3_1作业练习1.py', 'basic3_1作业练习2.py', 'basic3_1函数2.py', 'basic3_2内置函数.py', 'basic3_2变量作用域.py', 'basic3_2模块导入.py', 'basic3_3os模块1.py', 'basic3_3作业参考.py', 'basic3_3作业练习.py', 'basic3_3调试.py', '__init__.py']
 
 # 3.文件名称和路径拼接 路径+路径/文件名
 file1=os.path.join(workspace,files[0])
