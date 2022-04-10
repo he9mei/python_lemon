@@ -22,6 +22,7 @@
 
 
 # 进一步对异常进行处理。出现了异常，我还要干啥干啥！
+# 常用的两种模式：---重要
 """  模式一：
 try:
     XXXX   # 认为这一段代码会出异常
@@ -72,6 +73,36 @@ finally:
     print("heheheheh")
 
 
+# 另外两种异常场景---不常用
+"""模式3：
+try：
+    可能会出错的代码
+except 具体异常类(KeyError):
+    捕获异常后的处理
+except 具体异常类(OSError):
+    捕获异常后的处理
+except 具体异常类(FileNotFoundError):
+    捕获异常后的处理
+
+
+模式四：
+try：
+    可能会出错的代码
+except Exception as e:
+    捕获异常后的处理
+    print(e)
+"""
+
+# 文件打开异常处理方式二：上下文管理---常用，重要
+"""
+# 打开文件(无论有没有出现异常)，都会关闭文件对象。
+with open() as fs:   ----可以代替try except finally处理
+    # 没有出现异常的情况下，执行的代码。
+    # fs 文件对象 fs = open()
+"""
+with open("write.txt",encoding='utf-8') as fs:
+    datas = fs.read()
+    print(datas)
 
 
 
