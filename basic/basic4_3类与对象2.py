@@ -46,8 +46,13 @@ class FileOperator:
         # self.flag = 0
         # 判断文件要是不存在，咱就创建一个。
         if not os.path.exists(file_path):
-            # 目录 不存在。文件不存在。
-            pass
+            # 再判断目录不存在？-创建目录。文件不存在？-创建文件
+            path, file = os.path.split(file_path)
+            if os.path.exists(path) is False:  # 如果目录不存在，则创建目录
+                os.makedirs(path)
+            if os.path.exists(file_path) is False:  # 如果文件不存在，则创建文件
+                with open(file_path, "w", encoding="utf-8") as fs:
+                    fs.write("=======================================")
         try:
             self.fs = open(file_path, mode=acess_mode, encoding=encoding)
         except:
