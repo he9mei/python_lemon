@@ -16,17 +16,19 @@ CRITICAL 重大错误，比如崩溃
 我们最常用的是：info，error
 # 日志的作用：记录了执行过程。程序干了什么，做了什么事情。
 
+备注：如果是异常信息可以用logging.Exception('异常信息')打印全部异常报错信息
+
 二、如何打印日志？
 '''
 
 # 标准库  - logging
 import logging
 
-logging.debug("我是一条debug信息")
-logging.info('我是一条info信息')
-logging.error('我是一条error信息')
-logging.warning('我是一条warning信息')
-logging.critical('我是一条critical信息')
+# logging.debug("我是一条debug信息")
+# logging.info('我是一条info信息')
+# logging.error('我是一条error信息')
+# logging.warning('我是一条warning信息')
+# logging.critical('我是一条critical信息')
 '''
 执行结果：
 ERROR:root:我是一条error信息
@@ -43,6 +45,12 @@ logger = logging.getLogger('py17')
 # logger.setLevel("INFO")
 logger.setLevel(logging.INFO)  # # 设置输出级别,这两种方式都可以
 
+logger.info('我是一条info日志')
+logger.error('我是一条error信息')
+# 我是一条error信息
+# 问题：单独执行以上两条，info还是不会输出？与最初版本的logging.*一起执行才会输出？
+# 原因：没有指定任何输出渠道,就使用的默认输出渠道
+
 # 想设置日志内容呈现的形式。
 # 专门的类：Formatter
 # logging.Formatter(fmt,datefmt)
@@ -58,7 +66,8 @@ logger.addHandler(handler_console)
 logger.info('我是一条info日志')
 logger.error('我是一条error信息')
 
-# 2022-04-16 14:11:59,630  basic5_4日志.py  <module> [line:59] ERROR 我是一条error信息
+# 2022-04-16 15:27:07,618  basic5_4日志1_默认日志和自定义日志器.py  <module> [line:58] INFO 我是一条info日志
+# 2022-04-16 15:27:07,619  basic5_4日志1_默认日志和自定义日志器.py  <module> [line:59] ERROR 我是一条error信息
 
 '''
 总结

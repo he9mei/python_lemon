@@ -1,0 +1,14 @@
+2022-04-16 16:38:09,102_basic6_1日志2.py_[line:33]_WARNING_warning日志
+2022-04-16 16:38:09,107_basic6_1日志2.py_[line:34]_ERROR_error日志
+2022-04-16 17:07:54,757_basic6_1扩展_basicConfig版本.py_[line:23]_WARNING_warning日志
+2022-04-16 17:07:54,758_basic6_1扩展_basicConfig版本.py_[line:24]_ERROR_error日志
+2022-04-16 19:22:29,086_basic6_1my_logger_class.py_[line:42]_ERROR_异常信息：被除数不能为0！
+Traceback (most recent call last):
+  File "C:/Users/lipan/PycharmProjects/python_lemon/basic/basic6_1引入my_logger_class.py", line 8, in <module>
+    5/0
+ZeroDivisionError: division by zero
+2022-04-16 19:33:50,000_basic6_1my_logger_class.py_[line:45]_ERROR_异常信息：被除数不能为0！
+Traceback (most recent call last):
+  File "C:/Users/lipan/PycharmProjects/python_lemon/basic/basic6_1引入my_logger_class.py", line 8, in <module>
+    5/0
+ZeroDivisionError: division by zero
