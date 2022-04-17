@@ -13,7 +13,7 @@ fs.close()
 
 '''
 读取结果：
-{'platformName': 'Android', 'platformVersion': '7.1.1', 'deviceName': ['d1', True, 'hello'], 'info': {'name': 111, 'sex': 222, 'age': 333}}
+{'platformName': 'Android', 'platformVersion': '7.1.1', 'deviceName': ['d1', True, 'hello'], 'info': {'name': basic6_2excel_and_config, 'sex': 222, 'age': 333}}
 
 警告：
 YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.

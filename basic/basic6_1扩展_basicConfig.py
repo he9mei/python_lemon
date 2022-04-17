@@ -8,17 +8,17 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 fmt='%(asctime)s_%(filename)s_[line:%(lineno)d]_%(levelname)s_%(message)s'
-ft = logging.Formatter(fmt=fmt)
+# ft = logging.Formatter(fmt=fmt)
 
 handler_file = RotatingFileHandler(filename='basicConfig.log',encoding='utf-8',maxBytes=1024*1024*10,backupCount=10)
-handler_file.setFormatter(ft)
-handler_file.setLevel(logging.INFO)
+# handler_file.setFormatter(ft)
+# handler_file.setLevel(logging.INFO)
 
 handler_consol = logging.StreamHandler()
-handler_consol.setFormatter(ft)
-handler_consol.setLevel(logging.DEBUG)
+# handler_consol.setFormatter(ft)
+# handler_consol.setLevel(logging.DEBUG)
 
-# 设置一下RootLogger
+# 设置一下root logger
 # 格式这里不设置的话就用handler自带的格式
 # 这里handlers必须是list格式，只有一个也需要用handlers=[handler_consol]
 logging.basicConfig(level=logging.INFO,format=fmt,handlers=[handler_consol,handler_file])

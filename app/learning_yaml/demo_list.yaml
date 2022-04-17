@@ -1,4 +1,4 @@
-- 111      # 最外层是列表
+- basic6_2excel_and_config      # 最外层是列表
 - hello
 -         # 列表换行到字典时，注意加一个空格再回车
   name: huahua   # 列表内嵌字典

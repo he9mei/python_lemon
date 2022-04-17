@@ -5,6 +5,6 @@ deviceName:
   - True
   - hello
 info:
-  name: 111   # 字典内嵌字典
+  name: basic6_2excel_and_config   # 字典内嵌字典
   sex: 222
   age: 333

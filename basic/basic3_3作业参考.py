@@ -49,7 +49,7 @@ def vending_machine(money, drink):
 
 
 vending_machine(5, "橙子")
-vending_machine("111", "椰汁")
+vending_machine("basic6_2excel_and_config", "椰汁")
 vending_machine(9, "椰汁")
 vending_machine(9.5, "早餐奶")
 vending_machine(9, "怡宝")
