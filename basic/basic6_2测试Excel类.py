@@ -26,4 +26,9 @@ class TestExcel(unittest.TestCase):
         pass
 
 
+# 运行方式2：unittest.main()入口
+if __name__ == '__main__':
+    unittest.main()
+
+
 # TestSuite、TestLoader、ddt

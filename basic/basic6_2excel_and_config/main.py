@@ -15,7 +15,7 @@
 使用配置类中的方法，读取配置数据，并传递到excel实例当中，去使用。
 ps：配置化的数据的section可以是以下四个：excel路径、sheet表单、行下标、行和列下标。
 """
-from class_20190516.homework_0509_challenge.my_config import MyConfig
+from basic.basic6_2excel_and_config.my_config import MyConfig
 # 1 读取配置数据
 mc = MyConfig("conf.ini")
 excel_path = mc.get("excel","file_path")  # 文件路径
@@ -24,7 +24,7 @@ rows = mc.get_list_dict_tuple("row","row")  # 读取第几行、第几行的数�
 cords = mc.get_list_dict_tuple("coordinate","cors")
 
 # 2、操作excel
-from class_20190516.homework_0509_challenge.my_excel import MyExcel
+from basic.basic6_2excel_and_config.my_excel import MyExcel
 me = MyExcel(excel_path)  # 使用配置文件中的，文件路径
 me.select_sheet_by_name(sheet_name)  # 使用配置文件中的，表单名称
 for row in rows:
