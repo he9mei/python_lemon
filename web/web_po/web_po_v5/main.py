@@ -10,7 +10,7 @@ if __name__ == "__main__":
     # 执行TestCases中的用例
     # pytest.main(["-s", "-v", "test_login_pytest_fixture.py"])
     # 直接执行报错ERROR: file or directory not found: test_login_pytest_fixture.py
-    # 需要先切换路径到-->cd TestCases
+    # 需要先切换路径到-->cd test_cases
     # 还是会报错。在 TestCases目录下，新建main.py文件再执行---成功解决
 
 

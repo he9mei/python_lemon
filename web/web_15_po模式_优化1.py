@@ -22,9 +22,9 @@ web-第4周-第1节课
 1、数据共用、模块级共用、全局级共用。
 2、测试环境、预发布环境、生产环境。---不同环境的数据应该分开管理。
 基于以上原因，结论：所有数据全部拿出来统一管理。
-分层：TestDatas，与TestCases模块结构是对应的。可以区分为模块数据和全局数据。
+分层：test_dates，与TestCases模块结构是对应的。可以区分为模块数据和全局数据。
 
-目前优化后有四层：PageLocators, PageObjects, TestCases, TestDatas
+目前优化后有四层：PageLocators, PageObjects, test_cases, test_dates
 '''
 
 '''
