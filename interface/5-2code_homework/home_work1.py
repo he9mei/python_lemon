@@ -39,13 +39,15 @@ import string
 
 """
 
-
+'''
+# 老师写的
 def analyze(s):
     pattern = {"数字": "\d+", "拼音": "[a-zA-Z]+", "中文": "[\u4e00-\u9fa5]+", "符号": "\W"}
     for k, v in pattern.items():
         # p = re.compile(v,s)
         # p.findall()
         ss = re.findall(v, s)  # eg:数组 [1,8]
+        # print(ss)
         print(k + ":" + ' '.join(ss))
         # s = re.sub(v, '', s)
 
@@ -55,6 +57,37 @@ def analyze(s):
 if __name__ == '__main__':
     s = '我的是名字是ths, 今年18岁。'
     # s = "柠檬班教育6666，python17班的666同学都！！！"
-    analyze(s)
-    for  ss in s:
-        print(ss,ss in string.digits)
+    # analyze(s)
+    # for  ss in s:
+    #     print(ss,ss in string.digits)
+
+'''
+
+
+# =========自己写的=======
+# 分离字符串中的数字、中文、拼音、符号。
+# 比如这个字符串：
+# 我的是名字是ths,今年18岁。
+# 语法分析后得到结果如下：
+# 数字：18
+# 中文：我的名字是 今年 岁
+# 拼音：ths
+# 符号：，。
+def find(s):
+    dict_data = {'数字': '\d+', '中文': '[\u4e00-\u9fa5]+', '拼音': '[a-zA-Z]+', '符号': '\W+'}
+    for k, v in dict_data.items():
+        # list_s = re.compile(v).findall(s)
+        list_s=re.findall(v,s)   # 这两种写法作用一样
+        # print(list_s)
+        print('{}:{}'.format(k, ' '.join(list_s)))
+
+
+if __name__ == '__main__':
+    s='我的是名字是ths,今年18岁。'
+    # p='\d+'
+    # p='[\u4e00-\u9fa5]+'
+    # p='[a-zA-Z]+'
+    # p='\W+'
+    # list_s = re.compile(p).findall(s)
+    # print(list_s)
+    find(s)
